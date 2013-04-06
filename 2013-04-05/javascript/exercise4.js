@@ -211,40 +211,38 @@ building = STRUCT([buildingBase, pillars0,pillars1,pillars2,pillars3,floor0,floo
 
 
 
-//4 esercizio
-BLACK=[[0,0,0]]
+//4 Esercizio
+
+//colore nero
+BLACK = [0,0,0]
+//strutture delle finestre a est
 structureEast1 = COLOR(BLACK)(GRID([[-57.5, 25], [-1.5,0.5], [-37, 0.5, -9, 0.5, -4]]))
 structureEast2 = COLOR(BLACK)(GRID([[-57.5, 0.5, -11.5, 1 , -11.5 , 0.5], [-1.5,0.5], [-37, 10, -4]]))
-structureEast3 = COLOR(BLACK)(GRID([[-56, 26.5], [-23.5, 0.5], [-15 ,0.5, -9 , 0.5]]))
-structureEast4 = COLOR(BLACK)(GRID([[-56, 0.5, -12.25 , 1 , -12.25 , 0.5], [-23.5, 0.5], [-15 ,10]]))
-
 windowEast1 = STRUCT ([structureEast1,structureEast2])
 windowEast2 = T([3])([25])(windowEast1)
 windowEast3 = T([3])([22.14])(windowEast2)
+structureEast3 = COLOR(BLACK)(GRID([[-56, 26.5], [-23.5, 0.5], [-15 ,0.5, -9 , 0.5]]))
+structureEast4 = COLOR(BLACK)(GRID([[-56, 0.5, -12.25 , 1 , -12.25 , 0.5], [-23.5, 0.5], [-15 ,10]]))
 windowEast4= STRUCT ([structureEast3,structureEast4])
-
 windowEast = STRUCT([windowEast1,windowEast2,windowEast3,windowEast4])
-
+//strutture delle finestre a nord
 structureNorth1 = COLOR(BLACK)(GRID([[-110.5, 0.5],[-2.5, 47.5],[-37, 0.5, -9 , 0.5]]))
 structureNorth2 = COLOR(BLACK)(GRID([[-110.5, 0.5],[-2.5, 0.6, -11.125, 0.6, -11.125 , 0.6, -11.125 , 0.6, -11.125 , 0.6],[-37, 10, -4]]))
-
 windowNorth1 = STRUCT([structureNorth1,structureNorth2])
 windowNorth2 = T([3])([22])(windowNorth1)
 windowNorth3 = T([3])([23])(windowNorth2)
-
 windowNorth = STRUCT([windowNorth2,windowNorth3,windowNorth1])
-
+//strutture delle finestre a sud
 structureSouth1 = COLOR(BLACK)(GRID([[-1.5,0.5],[-2.5,0.5,-10.875,1,-10.875,1,-10.875,1,-10.875,0.5],[-27,24]]))
 structureSouth2 = COLOR(BLACK)(GRID([[-1.5,0.5],[-2.5,47.5],[-27,0.5,-11,1,-11,0.5]]))
-structureSouth3 = COLOR(BLACK)(GRID([[-15.25,0.5],[-21.3, 0.5, -13.35, 1, -13.35, 0.5],[-15.28,9.47]]))
-structureSouth4 = COLOR(BLACK)(GRID([[-15.25,0.5],[-21.3, 28.7],[-15.28,0.5,-8.47,0.5]]))
-
 windowSouth1 = STRUCT ([structureSouth1,structureSouth2])
 windowSouth2 = T([3])([25])(windowSouth1)
+structureSouth3 = COLOR(BLACK)(GRID([[-15.25,0.5],[-21.3, 0.5, -13.35, 1, -13.35, 0.5],[-15.28,9.47]]))
+structureSouth4 = COLOR(BLACK)(GRID([[-15.25,0.5],[-21.3, 28.7],[-15.28,0.5,-8.47,0.5]]))
 windowSouth3 = STRUCT ([structureSouth3,structureSouth4])
-
 windowSouth = STRUCT([windowSouth1,windowSouth2,windowSouth3])
-
-building4 = STRUCT([building3,windowNorth,windowEast,windowSouth])
-VIEW(building4)
+//base di appoggio edificio
+buildingBase = COLOR([0,1,0])(T([2,3])([-1,-1])(GRID([[120],[80],[1]])))
+building = STRUCT([buildingBase,pillars0,pillars1,pillars2,pillars3,floor0,floor1,floor2,floor3,floor4,north,east,south,west,windowNorth,windowEast,windowSouth])
+VIEW(building)
 
