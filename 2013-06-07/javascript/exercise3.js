@@ -71,7 +71,7 @@ function mapping(x,y,z){
 			if(x>1 && y>1 & z===0 & !find){
 				xCord = x;
 				yCord = y;
-			find = true;
+				find = true;
 		
 		
 			}

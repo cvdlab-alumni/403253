@@ -84,7 +84,7 @@ var numeroCaseSecondoAgglomerato = 5;
 
 
 function mapping(x,y,z){
-	var domain = DOMAIN([[0,x],[0,y],[0,z]])([25,25,5]);
+		var domain = DOMAIN([[0,x],[0,y],[0,z]])([25,25,5]);
 	var mapping = function (v) {
 	var x = v[0];
 	var y = v[1];
@@ -110,7 +110,7 @@ function mapping(x,y,z){
 				numeroCasePrimoAgglomerato--;
 				var finale = STRUCT([casaReplicataX,casaReplicatY]);
 				var finaleTraslatoRuotato = ruotaOggetto([0,1],(PI/2),finale);
-				var finaleTraslato = traslaOggetto([0,1,2],[x+1.5,y,z],finaleTraslatoRuotato);
+				var finaleTraslato = traslaOggetto([0,1,2],[x+1.6,y,z],finaleTraslatoRuotato);
 				homes.push(finaleTraslato);
 				
 			}
@@ -126,7 +126,7 @@ function mapping(x,y,z){
 					if( x !== 0 && y !==0 && numeroCaseSecondoAgglomerato>0 && x>10 && y>10 ){
 						var CaseSecondoAgglomerato = creaCasa(xCasa,xCasa,zCasa); 
 						var casaSReplicataX = replicaAndTrasla(2,CaseSecondoAgglomerato,[0],[1]);
-						var casaSReplicatY = replicaAndTrasla(2,casaSReplicataX,[1],[1]);
+						var casaSReplicatY = replicaAndTrasla(2,casaSReplicataX,[1],[1.8]);
 						numeroCaseSecondoAgglomerato--;
 						var finaleS = STRUCT([casaSReplicataX,casaSReplicatY]);
 						var finaleTraslatoS = traslaOggetto([0,1,2],[x,y,z],finaleS);
@@ -163,6 +163,7 @@ function mapping(x,y,z){
   }
   var model = MAP(mapping)(domain);
   return model;
+
  }
 
 var x=20;
