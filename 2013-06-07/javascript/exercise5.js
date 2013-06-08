@@ -78,10 +78,8 @@ var numeroAlberi = 30;
 
 var homes = [];
 var homesSecondoAgglomerato = [];
-var numeroCasePrimoAgglomerato = 20;
-var numeroCaseSecondoAgglomerato = 20;
-
-
+var numeroCasePrimoAgglomerato = 5;
+var numeroCaseSecondoAgglomerato = 5;
 
 
 
@@ -107,13 +105,13 @@ function mapping(x,y,z){
 			
 			if( x !== 0 && y!==0 && numeroCasePrimoAgglomerato>0 && x>5 && y>5 ){
 				var casaHomes = creaCasa(xCasa,xCasa,zCasa); 
-				var randomN = 1*(3*Math.random()+1);
-				var xCordStrad = 13.45;
-				var yCordStrad = 0 + randomN;
-				var r1 = 2*(3*Math.random()+1);
-				var casaReplicata = traslaOggetto([0,1],[xCordStrad,(yCordStrad+r1)],casaHomes);
+				var casaReplicataX = replicaAndTrasla(2,casaHomes,[0],[1]);
+				var casaReplicatY = replicaAndTrasla(2,casaReplicataX,[1],[1]);
 				numeroCasePrimoAgglomerato--;
-				homes.push(casaReplicata);
+				var finale = STRUCT([casaReplicataX,casaReplicatY]);
+				var finaleTraslatoRuotato = ruotaOggetto([0,1],(PI/2),finale);
+				var finaleTraslato = traslaOggetto([0,1,2],[x+1.5,y,z],finaleTraslatoRuotato);
+				homes.push(finaleTraslato);
 				
 			}
 	
@@ -123,16 +121,16 @@ function mapping(x,y,z){
 				z = 0;
 				var xCasa =  0.5 ;
 				var yCasa =  0.5 ;
-				var zCasa =  0.5 * (3*Math.random()+1);			
+				var zCasa =  0.5 * (3*Math.random()+1);	
+				
 					if( x !== 0 && y !==0 && numeroCaseSecondoAgglomerato>0 && x>10 && y>10 ){
-						var casa = creaCasa(xCasa,xCasa,zCasa);
-						var randomN1 = 1*(3*Math.random()+1);
-						var xCordStrad = 10 + randomN1;
-						var yCordStrad = 11;
-						var r = 2*(3*Math.random()+1);
-						var casaReplicataHomes =  traslaOggetto([0,1],[(xCordStrad - r),yCordStrad],casa);
+						var CaseSecondoAgglomerato = creaCasa(xCasa,xCasa,zCasa); 
+						var casaSReplicataX = replicaAndTrasla(2,CaseSecondoAgglomerato,[0],[1]);
+						var casaSReplicatY = replicaAndTrasla(2,casaSReplicataX,[1],[1]);
 						numeroCaseSecondoAgglomerato--;
-						homesSecondoAgglomerato.push(casaReplicataHomes);
+						var finaleS = STRUCT([casaSReplicataX,casaSReplicatY]);
+						var finaleTraslatoS = traslaOggetto([0,1,2],[x,y,z],finaleS);
+						homesSecondoAgglomerato.push(finaleTraslatoS);
 						
 					}
 			}
@@ -165,7 +163,7 @@ function mapping(x,y,z){
   }
   var model = MAP(mapping)(domain);
   return model;
-}
+ }
 
 var x=20;
 var y=20;
@@ -203,15 +201,14 @@ function creaPrimoAgglomerato(primoAgglomerato,maxNumero){
 }
 function creaSecondoAgglomerato(secondoAgglomerato,maxNumero){
 		for(var cont=0;cont<maxNumero;cont++){
-		
 			var casa = secondoAgglomerato[cont];
 			DRAW(casa);
 		}
 }
-var numCasePrimo = Math.floor(4*Math.random()+2);
-var numCaseSecondo = Math.floor((4*Math.random()+3));
-var caseprimoAgglomerato = creaPrimoAgglomerato(homes,numCasePrimo);
-var caseSecondoAgglomerato = creaSecondoAgglomerato(homesSecondoAgglomerato,numCaseSecondo);
+
+
+var casePrimoAgglomerato = creaPrimoAgglomerato(homes,1);
+var caseSecondoAgglomerato = creaSecondoAgglomerato(homesSecondoAgglomerato,1);
 
 
 //****************	ESERCIZIO 5	****************//
