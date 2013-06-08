@@ -19,7 +19,7 @@ function changeFormatFile (model){
 				output+= vertici[i][0]+",  "+vertici[i][1]+",  "+vertici[i][2];
 			}
 				else{
-					output+= vertici[i][0]+"  "+vertici[i][1]+"  0";
+					output+= vertici[i][0]+",  "+vertici[i][1]+",  0";
 				}
 			
 			output+="\n";
