@@ -27,7 +27,9 @@ function changeFormatFile (model){
 		
 		
 		
-	}		
+	}	
+	output+="\n";
+	
 		for (var i = 0; i < facceVertici.length; i++){
 			output+="facceVertici: ";
 			for (var j = 0; j < facceVertici[i].length; j++) {
