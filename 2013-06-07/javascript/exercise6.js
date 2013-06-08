@@ -25,23 +25,29 @@ modelloLAR = [V,FV];
 
 function lar2Obj (model){
 	var vertici = model[0];
-	var faccieVertici = model[1];
+	var facceVertici = model[1];
 	var output = "";
+
+	for (var i = 0; i < vertici.length; i++){
+			output+= "vertici: ";
+			
+			if(vertici[i][2] !== undefined){
+				output+= vertici[i][0]+",  "+vertici[i][1]+",  "+vertici[i][2];
+			}
+				else{
+					output+= vertici[i][0]+"  "+vertici[i][1]+"  0";
+				}
+			
+			output+="\n";
 	
-	for (var i = 0; i < V.length; i++){
-		output+= "vertici: ";
-		if(vertici[i][2] !== undefined){
-			output+= vertici[i][0]+"  "+vertici[i][1]+"  "+vertici[i][2];
-		}
-		else{
-			output+= vertici[i][0]+"  "+vertici[i][1]+"  0";
-		}
-		output+="\n";
+		
+		
+		
 	}		
-		for (var i = 0; i < faccieVertici.length; i++){
-			output+="faccieVertici: ";
+		for (var i = 0; i < facceVertici.length; i++){
+			output+="facceVertici: ";
 			for (var j = 0; j < faccieVertici[i].length; j++) {
-				output+=faccieVertici[i][j] + "  ";
+				output+=facceVertici[i][j] + "  ";
 			}
 		output+="\n";
 		}
